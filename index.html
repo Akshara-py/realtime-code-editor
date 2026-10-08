@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Real-Time Collaborative Code Editor</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: #0f172a;
+      color: #e5e7eb;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      height: 64px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 16px;
+      background: #111827;
+      border-bottom: 1px solid #334155;
+    }
+
+    h1 {
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .badge {
+      background: #1d4ed8;
+      color: white;
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    select,
+    button {
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid #475569;
+      background: #1e293b;
+      color: white;
+    }
+
+    button {
+      background: #22c55e;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      height: calc(100vh - 64px);
+    }
+
+    #editor {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .cm-editor {
+      height: 100%;
+    }
+
+    #output {
+      margin: 0;
+      padding: 14px;
+      background: #020617;
+      color: #93c5fd;
+      font-family: monospace;
+      border-left: 1px solid #334155;
+      overflow: auto;
+      white-space: pre-wrap;
+    }
+
+    .cm-ySelectionCaret {
+      background-color: #f472b6;
+      border-left: 2px solid #f472b6;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Collaborative Code Editor</h1>
+    <span class="badge" id="room">Room</span>
+    <span class="badge" id="users">1 online</span>
+
+    <select id="language">
+      <option value="javascript">JavaScript</option>
+      <option value="python">Python</option>
+    </select>
+
+    <button id="run">Run</button>
+  </header>
+
+  <main>
+    <div id="editor"></div>
+    <pre id="output">Output will appear here...</pre>
+  </main>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
